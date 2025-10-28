@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Permainan Klik Bola</title>
+  <style>
+    body{margin:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#60a5fa,#9333ea);font-family:system-ui;color:white;overflow:hidden}
+    h1{margin-bottom:10px;text-shadow:0 3px 6px rgba(0,0,0,0.3)}
+    #gameArea{position:relative;width:80vw;height:60vh;background:rgba(255,255,255,0.1);border-radius:14px;overflow:hidden;cursor:crosshair}
+    .ball{position:absolute;width:50px;height:50px;border-radius:50%;background:#fff;box-shadow:0 4px 10px rgba(0,0,0,0.3);transition:transform .1s}
+    .ball:active{transform:scale(0.8)}
+    #score{font-size:20px;margin-top:12px}
+    #startBtn{background:white;color:#4f46e5;border:0;padding:10px 18px;border-radius:10px;cursor:pointer;font-weight:700;margin-top:10px}
+  </style>
+</head>
+<body>
+  <h1>🎯 Klik Bolanya!</h1>
+  <div id="gameArea"></div>
+  <div id="score">Skor: 0</div>
+  <button id="startBtn">Mulai Permainan</button>
+
+  <script>
+    const gameArea = document.getElementById('gameArea');
+    const scoreEl = document.getElementById('score');
+    const startBtn = document.getElementById('startBtn');
+    let score = 0, playing = false, ball;
+
+    function randomPos(max){return Math.floor(Math.random()*max)}
+
+    function spawnBall(){
+      if(ball) ball.remove();
+      ball = document.createElement('div');
+      ball.className = 'ball';
+      ball.style.left = randomPos(gameArea.clientWidth-50)+'px';
+      ball.style.top = randomPos(gameArea.clientHeight-50)+'px';
+      ball.onclick = ()=>{
+        score++;
+        scoreEl.textContent = 'Skor: '+score;
+        spawnBall();
+      };
+      gameArea.appendChild(ball);
+    }
+
+    startBtn.onclick = ()=>{
+      if(playing) return;
+      playing = true;
+      score = 0;
+      scoreEl.textContent = 'Skor: 0';
+      startBtn.textContent = 'Main...';
+      let time = 30; // durasi permainan
+      spawnBall();
+      const timer = setInterval(()=>{
+        time--;
+        if(time<=0){
+          clearInterval(timer);
+          playing = false;
+          if(ball) ball.remove();
+          startBtn.textContent = 'Mulai Lagi';
+          alert('Permainan selesai! Skormu: '+score);
+        }
+      },1000);
+    };
+  </script>
+</body>
+</html>
