@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial GitHub Desktop untuk Mahasiswa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .github-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .section h3 {
+            color: #34495e;
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            color: #555;
+            font-size: 1.05em;
+        }
+
+        .steps {
+            counter-reset: step-counter;
+            list-style: none;
+        }
+
+        .steps li {
+            counter-increment: step-counter;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: -20px;
+            top: 20px;
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .steps li strong {
+            color: #2c3e50;
+            font-size: 1.1em;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .highlight strong {
+            color: #856404;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-download:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .tips {
+            background: #e7f3ff;
+            padding: 20px;
+            border-left: 4px solid #0066cc;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .tips h4 {
+            color: #0066cc;
+            margin-bottom: 10px;
+        }
+
+        .tips ul {
+            margin-left: 20px;
+            color: #004080;
+        }
+
+        .tips ul li {
+            margin-bottom: 8px;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        .command-box {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .steps li {
+                margin-left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="github-logo">🐙</div>
+            <h1>Tutorial GitHub Desktop</h1>
+            <p>Panduan Lengkap untuk Mahasiswa</p>
+        </header>
+
+        <div class="content">
+            <!-- Pengenalan -->
+            <div class="section">
+                <h2>📚 Apa itu GitHub?</h2>
+                <p>
+                    GitHub adalah platform hosting kode berbasis cloud yang memungkinkan developer untuk menyimpan, 
+                    mengelola, dan berkolaborasi dalam proyek pemrograman. GitHub menggunakan sistem version control 
+                    bernama Git untuk melacak perubahan kode.
+                </p>
+                <p>
+                    <strong>GitHub Desktop</strong> adalah aplikasi yang memudahkan kamu untuk berinteraksi dengan 
+                    GitHub tanpa perlu menggunakan command line. Sangat cocok untuk pemula!
+                </p>
+            </div>
+
+            <!-- Instalasi -->
+            <div class="section">
+                <h2>💻 Instalasi GitHub Desktop</h2>
+                <ol class="steps">
+                    <li>
+                        <strong>Download GitHub Desktop</strong>
+                        <p>Kunjungi website resmi dan download aplikasi sesuai sistem operasi kamu</p>
+                        <a href="https://desktop.github.com/" class="btn-download" target="_blank">
+                            Download GitHub Desktop
+                        </a>
+                    </li>
+                    <li>
+                        <strong>Install Aplikasi</strong>
+                        <p>Buka file installer yang telah didownload dan ikuti instruksi instalasi</p>
+                    </li>
+                    <li>
+                        <strong>Sign In</strong>
+                        <p>Buka GitHub Desktop dan sign in dengan akun GitHub kamu. Jika belum punya akun, 
+                        daftar terlebih dahulu di <a href="https://github.com" target="_blank">github.com</a></p>
+                    </li>
+                    <li>
+                        <strong>Konfigurasi Git</strong>
+                        <p>Masukkan nama dan email yang akan digunakan untuk commit kamu</p>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Membuat Repository -->
+            <div class="section">
+                <h2>🗂️ Membuat Repository Baru</h2>
+                <h3>Opsi 1: Membuat Repository Lokal</h3>
+                <ol class="steps">
+                    <li>
+                        <strong>Klik "Create New Repository"</strong>
+                        <p>Pada halaman utama GitHub Desktop, pilih "File" → "New Repository"</p>
+                    </li>
+                    <li>
+                        <strong>Isi Detail Repository</strong>
+                        <p>
+                            - <strong>Name:</strong> Nama project kamu<br>
+                            - <strong>Description:</strong> Deskripsi singkat project<br>
+                            - <strong>Local Path:</strong> Lokasi folder di komputer kamu<br>
+                            - <strong>Initialize with README:</strong> Centang untuk membuat file README.md
+                        </p>
+                    </li>
+                    <li>
+                        <strong>Klik "Create Repository"</strong>
+                        <p>Repository lokal kamu sudah dibuat!</p>
+                    </li>
+                </ol>
+
+                <h3>Opsi 2: Clone Repository yang Sudah Ada</h3>
+                <ol class="steps">
+                    <li>
+                        <strong>Klik "Clone Repository"</strong>
+                        <p>Pilih "File" → "Clone Repository"</p>
+                    </li>
+                    <li>
+                        <strong>Pilih Repository</strong>
+                        <p>Pilih dari daftar repository kamu atau masukkan URL repository</p>
+                    </li>
+                    <li>
+                        <strong>Pilih Lokasi</strong>
+                        <p>Tentukan di mana kamu ingin menyimpan repository di komputer kamu</p>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Workflow Dasar -->
+            <div class="section">
+                <h2>🔄 Workflow Dasar GitHub</h2>
+                <ol class="steps">
+                    <li>
+                        <strong>Membuat/Mengubah File</strong>
+                        <p>Buat atau edit file dalam folder repository kamu menggunakan text editor atau IDE favorit</p>
+                    </li>
+                    <li>
+                        <strong>Review Changes</strong>
+                        <p>GitHub Desktop akan otomatis mendeteksi perubahan. Cek tab "Changes" untuk melihat 
+                        file yang berubah</p>
+                    </li>
+                    <li>
+                        <strong>Commit Changes</strong>
+                        <p>
+                            - Tulis commit message yang jelas dan deskriptif di bagian bawah kiri<br>
+                            - Commit message menjelaskan apa yang kamu ubah<br>
+                            - Klik tombol "Commit to main"
+                        </p>
+                        <div class="highlight">
+                            <strong>💡 Tips Commit Message yang Baik:</strong><br>
+                            ✅ "Menambahkan fitur login"<br>
+                            ✅ "Memperbaiki bug pada halaman dashboard"<br>
+                            ❌ "update"<br>
+                            ❌ "fix"
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Push ke GitHub</strong>
+                        <p>Setelah commit, klik tombol "Push origin" untuk mengirim perubahan ke GitHub</p>
+                    </li>
+                    <li>
+                        <strong>Pull dari GitHub</strong>
+                        <p>Jika ada perubahan dari orang lain, klik "Fetch origin" lalu "Pull origin" untuk 
+                        mendapatkan update terbaru</p>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Branching -->
+            <div class="section">
+                <h2>🌿 Bekerja dengan Branch</h2>
+                <p>
+                    Branch memungkinkan kamu untuk bekerja pada fitur baru tanpa mengubah kode utama (main branch). 
+                    Ini sangat berguna untuk eksperimen atau development fitur.
+                </p>
+                <ol class="steps">
+                    <li>
+                        <strong>Membuat Branch Baru</strong>
+                        <p>Klik "Current Branch" → "New Branch" → Beri nama (contoh: "fitur-login") → "Create Branch"</p>
+                    </li>
+                    <li>
+                        <strong>Bekerja di Branch</strong>
+                        <p>Lakukan perubahan, commit seperti biasa. Perubahan hanya terjadi di branch ini</p>
+                    </li>
+                    <li>
+                        <strong>Pindah Branch</strong>
+                        <p>Klik "Current Branch" dan pilih branch yang ingin kamu gunakan</p>
+                    </li>
+                    <li>
+                        <strong>Merge Branch</strong>
+                        <p>Setelah fitur selesai, klik "Current Branch" → "Choose a branch to merge into main" → 
+                        Pilih branch yang ingin digabungkan</p>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Kolaborasi -->
+            <div class="section">
+                <h2>👥 Kolaborasi dengan Tim</h2>
+                <h3>Menambahkan Collaborator</h3>
+                <ol class="steps">
+                    <li>
+                        <strong>Buka Repository di GitHub.com</strong>
+                        <p>Klik "Repository" → "View on GitHub" di GitHub Desktop</p>
+                    </li>
+                    <li>
+                        <strong>Tambahkan Collaborator</strong>
+                        <p>Settings → Collaborators → Add people → Masukkan username atau email teman kamu</p>
+                    </li>
+                </ol>
+
+                <h3>Pull Request</h3>
+                <p>Pull request adalah cara untuk mengusulkan perubahan sebelum digabungkan ke branch utama</p>
+                <ol class="steps">
+                    <li>
+                        <strong>Push Branch</strong>
+                        <p>Push branch dengan fitur baru ke GitHub</p>
+                    </li>
+                    <li>
+                        <strong>Create Pull Request</strong>
+                        <p>Klik "Branch" → "Create Pull Request" atau buat di GitHub.com</p>
+                    </li>
+                    <li>
+                        <strong>Review dan Merge</strong>
+                        <p>Tim bisa mereview kode, memberikan komentar, lalu merge jika sudah oke</p>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Tips -->
+            <div class="section">
+                <h2>💡 Tips dan Best Practices</h2>
+                <div class="tips">
+                    <h4>🎯 Commit</h4>
+                    <ul>
+                        <li>Commit sesering mungkin dengan perubahan yang kecil dan spesifik</li>
+                        <li>Tulis commit message yang jelas dan informatif</li>
+                        <li>Hindari commit file yang tidak perlu (node_modules, .env, dll)</li>
+                    </ul>
+                </div>
+
+                <div class="tips">
+                    <h4>🌿 Branch</h4>
+                    <ul>
+                        <li>Gunakan branch untuk setiap fitur atau bug fix baru</li>
+                        <li>Beri nama branch yang deskriptif (contoh: fitur-keranjang, fix-bug-login)</li>
+                        <li>Hapus branch yang sudah tidak digunakan</li>
+                    </ul>
+                </div>
+
+                <div class="tips">
+                    <h4>👥 Kolaborasi</h4>
+                    <ul>
+                        <li>Selalu pull sebelum mulai bekerja untuk mendapat update terbaru</li>
+                        <li>Komunikasikan dengan tim sebelum merge ke branch utama</li>
+                        <li>Gunakan pull request untuk code review</li>
+                        <li>Selesaikan conflict dengan hati-hati</li>
+                    </ul>
+                </div>
+
+                <div class="tips">
+                    <h4>📝 File .gitignore</h4>
+                    <ul>
+                        <li>Buat file .gitignore untuk mengecualikan file yang tidak perlu di-track</li>
+                        <li>Contoh file yang diabaikan: node_modules/, .env, .DS_Store</li>
+                        <li>Template gitignore tersedia di <a href="https://github.com/github/gitignore" target="_blank">github.com/github/gitignore</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Troubleshooting -->
+            <div class="section">
+                <h2>🔧 Troubleshooting</h2>
+                <h3>Masalah Umum dan Solusi</h3>
+                
+                <div class="highlight">
+                    <strong>⚠️ Merge Conflict</strong>
+                    <p>Terjadi ketika dua orang mengubah bagian yang sama dari file.</p>
+                    <p><strong>Solusi:</strong> Buka file yang conflict, pilih perubahan mana yang mau dipertahankan, 
+                    lalu commit hasil resolve conflict.</p>
+                </div>
+
+                <div class="highlight">
+                    <strong>⚠️ Push Ditolak</strong>
+                    <p>Terjadi ketika ada perubahan di remote yang belum ada di lokal kamu.</p>
+                    <p><strong>Solusi:</strong> Pull terlebih dahulu, resolve conflict jika ada, lalu push lagi.</p>
+                </div>
+
+                <div class="highlight">
+                    <strong>⚠️ Commit ke Branch yang Salah</strong>
+                    <p>Tidak sengaja commit ke branch yang salah.</p>
+                    <p><strong>Solusi:</strong> Di GitHub Desktop, klik "History" → klik kanan pada commit → 
+                    "Revert This Commit" (jika belum push) atau buat branch baru dari commit tersebut.</p>
+                </div>
+            </div>
+
+            <!-- Resources -->
+            <div class="section">
+                <h2>📖 Sumber Belajar Tambahan</h2>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>📘 <a href="https://docs.github.com/en/desktop" target="_blank">GitHub Desktop Documentation</a></li>
+                    <li>🎓 <a href="https://skills.github.com/" target="_blank">GitHub Skills</a> - Tutorial Interaktif</li>
+                    <li>📹 <a href="https://www.youtube.com/githubguides" target="_blank">GitHub Guides</a> - Video Tutorial</li>
+                    <li>💬 <a href="https://github.community/" target="_blank">GitHub Community</a> - Forum Diskusi</li>
+                    <li>📚 <a href="https://education.github.com/pack" target="_blank">GitHub Student Developer Pack</a> - Gratis untuk Mahasiswa!</li>
+                </ul>
+            </div>
+
+            <div class="highlight">
+                <strong>🎓 Selamat Belajar!</strong>
+                <p>Jangan takut untuk mencoba dan bereksperimen. Git dan GitHub adalah skill yang sangat berharga 
+                untuk karir programming kamu. Practice makes perfect!</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>📚 Tutorial GitHub Desktop untuk Mahasiswa | Dibuat dengan ❤️</p>
+            <p style="margin-top: 10px; opacity: 0.8;">© 2025 - Panduan ini bersifat open source</p>
+        </footer>
+    </div>
+</body>
+</html>
