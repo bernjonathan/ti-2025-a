@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Sederhana</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 40px;
+            color: #333;
+        }
+        h1 {
+            color: #0078d7;
+        }
+        button {
+            background-color: #0078d7;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005fa3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Halo Dunia!</h1>
+    <p>Ini adalah contoh halaman HTML sederhana.</p>
+    <button onclick="tampilkanPesan()">Klik Saya</button>
+
+    <script>
+        function tampilkanPesan() {
+            alert("Halo! Ini pesan dari JavaScript.");
+        }
+    </script>
+</body>
+</html>
