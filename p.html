@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Short Coffee Menu</title>
+    <style>
+        body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; margin: 2rem; background:#fffaf4; color:#3b2f2f; }
+        .menu { max-width:520px; margin:0 auto; padding:1rem 1.25rem; border:1px solid #f0d9c7; border-radius:10px; background:#fff; box-shadow:0 4px 10px rgba(0,0,0,0.04); }
+        h1 { margin:0 0 .5rem; font-size:1.4rem; }
+        p.tagline { margin:.25rem 0 1rem; font-size:.9rem; color:#7a5b4e; }
+        .section { margin-bottom:1rem; }
+        .item { display:flex; justify-content:space-between; align-items:center; padding:.45rem 0; border-top:1px dashed #f0d9c7; }
+        .item:first-of-type { border-top: none; }
+        .name { font-weight:600; }
+        .desc { font-size:.85rem; color:#7a5b4e; margin-top:.15rem; }
+        .price { font-weight:700; color:#b85c2a; margin-left:1rem; white-space:nowrap; }
+        .meta { font-size:.8rem; color:#8b6a5f; margin-top:.4rem; }
+        footer { text-align:center; font-size:.8rem; color:#8b6a5f; margin-top:1rem; }
+    </style>
+</head>
+<body>
+  <main class="menu" role="main" aria-label="Coffee menu">
+    <header>
+      <h1>Coffee Menu ☕</h1>
+      <p class="tagline">Freshly brewed — small, simple selection.</p>
+    </header>
+
+    <section class="section" aria-labelledby="espresso">
+      <h2 id="espresso" style="font-size:1rem;margin:.25rem 0 .5rem;">Espresso</h2>
+      <div class="item">
+        <div>
+          <div class="name">Espresso</div>
+          <div class="desc">Single shot, intense and aromatic</div>
+        </div>
+        <div class="price">$2.00</div>
+      </div>
+
+      <div class="item">
+        <div>
+          <div class="name">Americano</div>
+          <div class="desc">Espresso + hot water</div>
+        </div>
+        <div class="price">$2.50</div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="milk">
+      <h2 id="milk" style="font-size:1rem;margin:.25rem 0 .5rem;">Milk Drinks</h2>
+      <div class="item">
+        <div>
+          <div class="name">Cappuccino</div>
+          <div class="desc">Espresso, steamed milk, foam</div>
+        </div>
+        <div class="price">$3.50</div>
+      </div>
+
+      <div class="item">
+        <div>
+          <div class="name">Latte</div>
+          <div class="desc">Creamy steamed milk with espresso</div>
+        </div>
+        <div class="price">$3.75</div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="cold">
+      <h2 id="cold" style="font-size:1rem;margin:.25rem 0 .5rem;">Cold</h2>
+      <div class="item">
+        <div>
+          <div class="name">Iced Coffee</div>
+          <div class="desc">Chilled brew over ice</div>
+        </div>
+        <div class="price">$3.00</div>
+      </div>
+    </section>
+
+    <div class="meta">Sizes: S / M / L — Ask for plant milk options.</div>
+
+    <footer>Thank you — enjoy your cup!</footer>
+  </main>
+</body>
+</html>
