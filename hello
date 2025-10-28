@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Halaman Sederhana</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;margin:0;background:#f7f9fc;color:#0b1220}
+    .card{background:#fff;padding:20px;border-radius:12px;box-shadow:0 6px 18px rgba(12,20,30,0.08);max-width:420px;text-align:center}
+    button{padding:10px 14px;border-radius:8px;border:0;background:#2563eb;color:#fff;cursor:pointer}
+    p{color:#334155}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Halo!</h1>
+    <p>Ini halaman HTML sederhana. Klik tombol di bawah untuk melihat aksi kecil.</p>
+    <button id="btn">Klik aku</button>
+    <p id="count" style="margin-top:12px;color:#64748b">Diklik: 0 kali</p>
+  </div>
+
+  <script>
+    let cnt = 0;
+    document.getElementById('btn').addEventListener('click', ()=>{
+      cnt++;
+      document.getElementById('count').textContent = 'Diklik: ' + cnt + ' kali';
+      if(cnt % 5 === 0) alert('Wah, sudah ' + cnt + ' klik!');
+    });
+  </script>
+</body>
+</html>
