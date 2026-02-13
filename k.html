@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Session 4: JavaScript Basics</title>
+</head>
+<body>
+    <h2>4. If Else (Kondisi)</h2>
+    <p>If else digunakan untuk membuat keputusan</p>
+    <button onclick="cekNilai()">Cek Nilai Kelulusan</button>
+    <p id="demo4"></p>
+     <input type="number" id="angka1" placeholder="Angka 1" style="width: 100px;">
+    <script>
+        function cekNilai() {
+            let nilai = parseFloat(document.getElementById("angka1").value);
+            let hasil;
+            
+            if (nilai >= 80) {
+                hasil = "A - Excellent!";
+            } else if (nilai >= 70) {
+                hasil = "B - Good!";
+            } else if (nilai >= 60) {
+                hasil = "C - Pass";
+            } else {
+                hasil = "D - Tidak Lulus";
+            }
+            
+            document.getElementById("demo4").innerHTML = 
+                "Nilai: " + nilai + "<br>Grade: " + hasil;
+        }
+    </script>
+</body>
+</html>
